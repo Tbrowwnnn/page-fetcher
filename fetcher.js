@@ -16,6 +16,7 @@ request(args[0], (error, response, body) => {
 
       if (error) {
         console.error(error);
+        process.exit();
       }
       console.log(`Downloaded and saved ${bytes} bytes to ${args[1]}`);
       process.exit();
@@ -23,7 +24,8 @@ request(args[0], (error, response, body) => {
   };
 
   if (error) {
-    return console.error(error, response);
+    console.error(error, response);
+    process.exit();
   }
   if (fs.existsSync(args[1])) {
 
